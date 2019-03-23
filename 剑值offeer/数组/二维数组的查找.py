@@ -30,27 +30,23 @@ class Solution:
 当target大于元素a[row][col]时，那么target必定在元素a所在列的下边,
 即row++；
 '''
-public class Solution {
-    public boolean Find(int [][] array,int target) {
-        int row=0;
-        int col=array[0].length-1;
-        while(row<=array.length-1&&col>=0){
-            if(target==array[row][col])
-                return true;
-            else if(target>array[row][col])
-                row++;
-            else
-                col--;
-        }
-        return false;
- 
-    }
-}
-
+class Solution2:
+    # array 二维列表
+    def Find(self, target, array):
+        row_len=0
+        col_len=len(array[0])-1
+        while row_len<len(array) and col_len>=0:
+            if target==array[row_len][col_len]:
+                return True
+            elif target<array[row_len][col_len]:
+                col_len-=1
+            else:
+                row_len+=1
+        return False
 '''
 思路三
 '''
-class Solution:
+class Solution1:
     # array 二维列表
     #每一行都看成是一个有序数组，利用二分查找
     def Find(self, target, array):
