@@ -11,40 +11,40 @@
 #         self.left = None
 #         self.right = None
  
-# class Solution(object):
-#     def sumNumbers(self, root):
-#         """
-#         :type root: TreeNode
-#         :rtype: int
-#         """
-#         if not root:
-#             return 0
-#         result = []
-#         if not root.left and not root.right:
-#             return root.val
-#         else:
-#             self.findPath(root.left, [root.val], result)
-#             self.findPath(root.right, [root.val], result)
-#         return sum(result)
-#     def findPath(self, node, temp_path, result):
-#         if not node:
-#             return
-#         temp_path.append(node.val)
-#         if not node.left and not node.right:
-#             path_sum = 0
-#             for value in temp_path:
-#                 path_sum *= 10
-#                 path_sum += value                
-#             result.append(path_sum)
-#         else:
-#             self.findPath(node.left, temp_path, result)
-#             self.findPath(node.right, temp_path, result)
-#         temp_path.pop()        
-#         return
-def sumNumbers(self, root):
-        if root==None:
+class Solution(object):
+    def sumNumbers(self, root):
+        """
+        :type root: TreeNode
+        :rtype: int
+        """
+        if not root:
             return 0
-        return self.sumNumber(root,0)
+        result = []
+        if not root.left and not root.right:
+            return root.val
+        else:
+            self.findPath(root.left, [root.val], result)
+            self.findPath(root.right, [root.val], result)
+        return sum(result)
+    def findPath(self, node, temp_path, result):
+        if not node:
+            return
+        temp_path.append(node.val)
+        if not node.left and not node.right:
+            path_sum = 0
+            for value in temp_path:
+                path_sum *= 10
+                path_sum += value                
+            result.append(path_sum)
+        else:
+            self.findPath(node.left, temp_path, result)
+            self.findPath(node.right, temp_path, result)
+        temp_path.pop()        
+        return
+def sumNumbers(self, root):
+    if root==None:
+        return 0
+    return self.sumNumber(root,0)
     def sumNumber(self,root,t):
         l=0
         r=0
@@ -64,7 +64,7 @@ def sumNumbers(self, root):
 输出：22
 解释：(100) + (101) + (110) + (111) = 4 + 5 + 6 + 7 = 22
 '''
-class Solution(object):
+class Solution2(object):
     def sumRootToLeaf(self, root):
         """
         :type root: TreeNode
