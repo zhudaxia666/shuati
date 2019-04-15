@@ -15,7 +15,7 @@ class Solution1:
 
 #方法2
 # -*- coding:utf-8 -*-
-class Solution1:
+class Solution3:
     def GetNumberOfK(self, data, k):
         # write code here
         if len(data)==0 or k not in data:
