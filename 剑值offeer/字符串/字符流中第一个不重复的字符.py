@@ -24,7 +24,7 @@ class Solution:
 将字节流保存起来，通过哈希表统计字符流中每个字符出现的次数，顺便将字符流保存在string中，然后再遍历string，从哈希表中找到第一个出现一次的字符。
 '''
 # -*- coding:utf-8 -*-
-class Solution:
+class Solution2:
     def __init__(self):
         self.s = ''
         self.count = {}
