@@ -16,3 +16,18 @@ a=Solution()
 nums = [2,7,11,15]
 target = 9
 print(a.twoSum(nums,target))
+
+class Solution2:
+    def twoSum(self, nums, target):
+        """
+        :type nums: List[int]
+        :type target: int
+        :rtype: List[int]
+        """
+        n = len(nums)
+        lookup = {}
+        for i in range(n):
+            tmp = target - nums[i]
+            if tmp in lookup:
+                return [lookup[tmp], i]
+            lookup[nums[i]] = i
