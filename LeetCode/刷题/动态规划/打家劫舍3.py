@@ -35,6 +35,6 @@ class Solution:
         # left[0]则为不抢r.lrft可获得的最大金额,left[1]则为抢劫r.left可获得的最大金额  以下right[] 分析同理
         left=self.helper(root.left)
         right=self.helper(root.right)
-        skip=max(left)+max(right)
-        rob=root.val+left[0]+right[0]
+        skip=max(left)+max(right)#计算不抢劫当前根节点可获得的最大金额(那么其左右子树可以随便抢)
+        rob=root.val+left[0]+right[0]#计算若抢劫根节点可获得的最大金额(此时,其左右子树的根节点不能被抢)
         return [skip,rob]

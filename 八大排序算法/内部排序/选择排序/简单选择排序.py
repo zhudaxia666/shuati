@@ -36,7 +36,7 @@ def SelectSort(input_list):
         return []
     sorted_list = input_list
     length = len(sorted_list)
-    for i in range(length):
+    for i in range(length-1):
         min_index = i
         for j in range(i + 1, length):
             if sorted_list[min_index] > sorted_list[j]:
@@ -50,7 +50,7 @@ def SelectSort(input_list):
 
 if __name__ == "__main__":
     a=[6,4,8,9,2,3,1]
-    xuzesort(a)
+    print(SelectSort(a))
 
 """
 2、时间复杂度

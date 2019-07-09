@@ -16,8 +16,22 @@ def LIS1(A,n):
     for i in range(n):
         for j in range(i):
             if A[i]>A[j]:
-                r[i]=max(r[i],r[i]+1)
-    return max(r)
+                r[i]=max(r[i],r[j]+1)
+    print(max(r))
+    # return max(r)
+
+#找出并打印
+def print_LIS1(A,n):
+    r=[1]*n
+    pre=[]
+    for i in range(n):
+        for j in range(i):
+            if A[i]>A[j]:
+                if r[i]<r[j]+1:
+                    pre.append(r[j])
+
+    print(max(r))
+
 '''
 2.贪心算法+二分法
 新建一个low数组，low[i]表示长度为i的LIS结尾元素的最小值。对于一个上升子序列，显然其结尾元素越小，
@@ -50,6 +64,6 @@ def binaryser(low,n,left,right):
             left=mid+1
     return left
     
-a=[2,1,4,3,1,5,6]
-LIS2(a,len(a))
+a=[1,4,6,2,8,9,7]
+LIS1(a,len(a))
 
