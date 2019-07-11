@@ -52,3 +52,41 @@ class Solution:
             return self.find_kth(a,a_begin+k//2,b,b_begin,k-k//2)
         else:
             return self.find_kth(a,a_begin,b,b_begin+k//2,k-k//2)
+
+class Solution2:
+    def findMedianSortedArrays(self, nums1: List[int], nums2: List[int]) -> float:
+        def findkth(nums1,nums2,k):
+            m=len(nums1)
+            n=len(nums2)
+            if m==0:
+                return nums2[k-1]
+            if n==0:
+                return nums1[k-1]
+            if k==1:
+                return min(nums1[0],nums2[0])
+            
+            mid=k//2
+            a=float("inf")
+            b=float("inf")
+            
+            if mid<=m:
+                a=nums1[mid-1]
+            if mid<=n:
+                b=nums2[mid-1]
+            if a<b:
+                return findkth(nums1[mid:],nums2,k-mid)
+            else:
+                return findkth(nums1,nums2[mid:],k-mid)
+        m=len(nums1)
+        n=len(nums2)
+        
+        if m==0 and n==0:
+            return 0.0
+        total=m+n
+        if total%2==1:
+            return findkth(nums1,nums2,total//2+1)*1.0
+        else:
+            a=findkth(nums1,nums2,total//2)
+            b=findkth(nums1,nums2,total//2+1)
+            return (a+b)/2.0
+        

@@ -67,7 +67,7 @@ class Solution1(object):
         if k > len(array):
             return None
         heap = array[:k]
-        for i in range(k,-1,-1):
+        for i in range(k-1,-1,-1):
             heap_build(i,heap)
         for j in range(k,len(array)):
             if array[j]>heap[0]:

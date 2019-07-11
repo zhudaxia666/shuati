@@ -9,7 +9,7 @@
 def merge_sort(input_list):
     if len(input_list)<=1:
         return input_list
-    
+     
     mid=len(input_list)//2
     
     left=merge_sort(input_list[:mid])
@@ -30,6 +30,11 @@ def merge1(left,right):
     result.extend(left[i:])
     result.extend(right[j:])
     return result
+
+'''
+第二种办法：
+'''
+
 
 if __name__ == "__main__":
     a=[50,123,543,187,49,30,0,2,11,100]
