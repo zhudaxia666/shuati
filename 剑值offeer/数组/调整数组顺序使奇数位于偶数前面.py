@@ -40,3 +40,17 @@ class Solution3:
                 boarder += 1
                 array.insert(boarder, array.pop(idx))
         return array
+#类似直接插入排序
+
+class Solution4:
+    def reOrderArray(self, array):
+        # write code here
+        if len(array)<2:
+            return array
+        for i in range(1,len(array)):
+            j=i-1
+            while j>=0:
+                if array[j+1]%2==1 and array[j]%2==0:
+                    array[j+1],array[j]=array[j],array[j+1]
+                j-=1
+        return array

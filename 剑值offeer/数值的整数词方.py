@@ -16,3 +16,24 @@ class Solution:
             return 1/result
         else:
             return result
+
+
+'''
+使用快速幂算法
+详细见链接：https://blog.csdn.net/qq_19782019/article/details/85621386
+'''
+class Solution:
+    def Power(self, base, exponent):
+        # write code here
+        if base==0:
+            return False
+        if exponent==0:
+            return 1
+        res=1
+        tmp=abs(exponent)
+        while tmp:
+            if tmp&1:
+                res*=base
+            tmp >>=1
+            base*=base
+        return res if exponent>0 else 1/res

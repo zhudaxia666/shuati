@@ -13,7 +13,7 @@
 class Solution:
     # 返回镜像树的根节点
     def Mirror(self, root):
-        if root==None or (root.left==None and root.right==None):
+        if root==None:
             return None
         root.left,root.right=root.right,root.left
         if root.left:
