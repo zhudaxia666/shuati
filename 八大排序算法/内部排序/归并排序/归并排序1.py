@@ -5,40 +5,35 @@
 得到n/2个长度为2或1的有序子序列，再两两归并，
 最终得到一个长度为n的有序序列为止，这称为2路归并排序。
 """
-def mergesort(arr):
-    if not arr or len(arr)<2:
-        return
-    merge_sort(arr,0,len(arr)-1)
-def merge_sort(arr,l,r):
-    if l==r:
-        return
-    mid=l+(r-l)//2
-    merge_sort(arr,l,mid)
-    merge_sort(arr,mid,r)
-    merge(arr,l,mid,r)
-def merge(arr,l,m,r):
-    tmp=[]
-    i=0
-    p1=l
-    p2=m+1
-    while p1<=m and p2<=r:
-        if arr[p1]<arr[p2]:
-            tmp[i]=arr[p1]
-            p1+=1
+'''
+小和问题
+'''
+def merge_sort(input_list):
+    if len(input_list)<=1:
+        return input_list
+     
+    mid=len(input_list)//2
+    
+    left=merge_sort(input_list[:mid])
+    right=merge_sort(input_list[mid:])
+# 这里记录一下，python有一个模块，专门提供了归并排序的方法，叫做“heapq”模块，因此我们只要将分解后的结果导入该方法即可
+    return merge1(left,right)
+
+def merge1(left,right):
+    i,j=0,0
+    result=[]
+    res=0
+    while i<len(left) and j<len(right):
+        if left[i]<=right[j]:
+            res+=left[i]
+            result.append(left[i])
+            i+=1
         else:
-            tmp[i]=arr[p2]
-            p2+=1
-        i+=1
-    while p1<=m:
-        tmp[i]=arr[p1]
-        p1+=1
-        i+=1
-    while p2<=m:
-        tmp[i]=arr[p2]
-        p2+=1
-        i+=1
-
-
+            result.append(right[j])   
+            j+=1
+    result.extend(left[i:])
+    result.extend(right[j:])
+    return result
 
 '''
 第二种办法：
@@ -47,5 +42,4 @@ def merge(arr,l,m,r):
 
 if __name__ == "__main__":
     a=[50,123,543,187,49,30,0,2,11,100]
-    mergesort(a)
-    print(a)
+    print(merge_sort(a))

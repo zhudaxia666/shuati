@@ -71,3 +71,31 @@ class Solution2:
             return None
         else:
             return result[k - 1]
+
+class Solution3(object):
+    def kthSmallest(self, root, k):
+        """
+        :type root: TreeNode
+        :type k: int
+        :rtype: int
+        """
+        res=[]
+        def inorderTraversal(root):
+            if not root:
+                return []
+            st=[(root,False)]
+            while st:
+                cur,vis=st.pop()
+                if vis:
+                    res.append(cur.val)
+                else:
+                    if cur.right:
+                        st.append((cur.right,False))
+                    st.append((cur,True))
+                    if cur.left:
+                        st.append((cur.left,False))
+        inorderTraversal(root)
+        if k>len(res) or k<=0:
+            return None
+        else:
+            return res[k-1]

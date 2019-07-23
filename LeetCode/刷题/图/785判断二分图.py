@@ -30,7 +30,8 @@ graph将会以邻接表方式给出，graph[i]表示图中与节点i相连的所
 '''
 ''''
 思路：一个节点染成红色,我们把它相连的节点染成蓝色,如果当两种颜色相同的也连接了,说明不是二分图.
-采用BFS或者DFS都可以解决此题。首先所有结点的初始状态都为为染色状态，用0表示。依次遍历邻接表中每个结点的邻接结点是否与当前状态以及邻接结点的邻接结….是否发生冲突，
+采用BFS或者DFS都可以解决此题。首先所有结点的初始状态都为为染色状态，用0表示。依次遍历邻接表中每个结点的邻接结点是否与当前状态以及邻接结点的邻接结….
+是否发生冲突，
 即当前节点与邻接结点用1和-1表示代表已经染色，如果当前节点与其邻接结点已经染色并且染色号相同即代表不能把他们分别放到两个空间内此时返回false。 
 '''
 #dfs
@@ -73,4 +74,28 @@ class Solution1:
                     elif colors[tmp] == colors[cur]:
                         return False
         return True
+class Solution2(object):
+    def isBipartite(self, graph):
+        """
+        :type graph: List[List[int]]
+        :rtype: bool
+        """
+        n=len(graph)
+        colors=[0]*n
+        for i in range(n):
+            if colors[i]!=0:
+                continue
+            colors[i]=1
+            q=[]
+            q.insert(0,i)
+            while q:
+                cur=q.pop()
+                for tmp in graph[cur]:
+                    if colors[tmp]==0:
+                        colors[tmp]=-colors[cur]
+                        q.insert(0,tmp)
+                    elif colors[tmp]==colors[cur]:
+                        return False
+        return True
+        
 
