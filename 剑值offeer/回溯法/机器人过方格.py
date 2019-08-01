@@ -28,3 +28,29 @@ class Solution:
             tranfor(r,c-1)
         tranfor(0,0)
         return self.res
+'''
+思路：
+思路：将地图全部置1，遍历能够到达的点，将遍历的点置0并令计数+1.这个思路在找前后左右相连的点很有用，
+比如leetcode中的海岛个数问题/最大海岛问题都可以用这种方法来求解。
+'''
+class Solution:
+    def __init__(self):
+        self.count=0
+    def movingCount(self, threshold, rows, cols):
+        # write code here
+        arr=[[1 for _ in range(cols)] for _ in range(rows)]
+        self.findpath(arr,0,0,threshold)
+        return self.count
+    def findpath(self,arr,i,j,k):
+        if i<0 or j<0 or i>=len(arr) or j>=len(arr[0]):
+            return
+        tmpi=list(map(int,list(str(i))))
+        tmpj=list(map(int,list(str(j))))
+        if sum(tmpi)+sum(tmpj)>k or arr[i][j]!=1:
+            return
+        arr[i][j]=0
+        self.count+=1
+        self.findpath(arr,i-1,j,k)
+        self.findpath(arr,i+1,j,k)
+        self.findpath(arr,i,j-1,k)
+        self.findpath(arr,i,j+1,k)

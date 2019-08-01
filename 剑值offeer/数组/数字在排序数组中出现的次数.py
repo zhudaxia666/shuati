@@ -12,7 +12,7 @@ class Solution1:
             if data[j] == k:
                 i += 1
         return i
-
+ 
 #方法2
 # -*- coding:utf-8 -*-
 class Solution3:

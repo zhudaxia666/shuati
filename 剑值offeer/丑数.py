@@ -10,6 +10,12 @@
 我们只需要记下这个丑数的位置，同时每次生成新的丑数的时候，去更新这个T2。对乘以3和5而言，也存在着同样的T3和T5。
 注意：1，2，3，4，5，6都是丑数。所以当index小于7的时候，直接返回index即可。
 '''
+''''
+因为丑数只包含质因子2，3，5，假设我们已经有n-1个丑数，按照顺序排列，且第n-1的丑数为M。那么第n个丑数一定是由这n-1个丑数分别乘以2，3，5，
+得到的所有大于M的结果中，最小的那个数。
+事实上我们不需要每次都计算前面所有丑数乘以2，3，5的结果，然后再比较大小。因为在已存在的丑数中，一定存在某个数T2，在它之前的所有数乘以2都小于已有丑数，
+而T2×2的结果一定大于M，同理，也存在这样的数T3，T5T3，T5，我们只需要标记这三个数即可。
+'''
 class Solution:
     def GetUglyNumber_Solution(self, index):
         # write code here
@@ -26,3 +32,28 @@ class Solution:
             while res[t5]*5<=res[i]:
                 t5+=1
         return res[index-1]
+
+# -*- coding:utf-8 -*-
+class Solution1:
+    def GetUglyNumber_Solution(self, index):
+        # write code here
+        if index == 0:
+            return 0
+        # 1作为特殊数直接保存
+        baselist = [1]
+        min2 = min3 = min5 = 0
+        curnum = 1
+        while curnum < index:
+            minnum = min(baselist[min2] * 2, baselist[min3] * 3, baselist[min5] * 5)
+            baselist.append(minnum)
+            # 找到第一个乘以2的结果大于当前最大丑数M的数字，也就是T2
+            while baselist[min2] * 2 <= minnum:
+                min2 += 1
+            # 找到第一个乘以3的结果大于当前最大丑数M的数字，也就是T3
+            while baselist[min3] * 3 <= minnum:
+                min3 += 1
+            # 找到第一个乘以5的结果大于当前最大丑数M的数字，也就是T5
+            while baselist[min5] * 5 <= minnum:
+                min5 += 1
+            curnum += 1
+        return baselist[-1]
