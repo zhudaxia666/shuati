@@ -42,7 +42,7 @@ class Solution:
         # write code here
         result=ListNode(0)
         res=result
-        result.next=pHead
+        # result.next=pHead
         tmp=pHead
         while tmp and tmp.next:
             if tmp.val==tmp.next.val:

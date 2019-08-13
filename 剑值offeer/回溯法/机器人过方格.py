@@ -33,7 +33,7 @@ class Solution:
 思路：将地图全部置1，遍历能够到达的点，将遍历的点置0并令计数+1.这个思路在找前后左右相连的点很有用，
 比如leetcode中的海岛个数问题/最大海岛问题都可以用这种方法来求解。
 '''
-class Solution:
+class Solution1:
     def __init__(self):
         self.count=0
     def movingCount(self, threshold, rows, cols):
