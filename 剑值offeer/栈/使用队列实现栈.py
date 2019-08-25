@@ -19,14 +19,14 @@ class Mystack(object):
     def push(self,x):
         self.queue1.append(x)
     def pop(self):
-        while len[self.queue1]>1:
+        while len(self.queue1)>1:
             self.queue2.append(self.queue1.pop(0))
         res=self.queue1.pop()
         while self.queue2:
             self.queue1.append(self.queue2.pop(0))
         return res
     def top(self):
-        while len[self.queue1]>1:
+        while len(self.queue1)>1:
             self.queue2.append(self.queue2.pop(0))
         res=self.queue1.pop()
         self.queue2.append(res)

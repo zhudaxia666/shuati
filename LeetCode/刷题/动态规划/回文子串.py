@@ -49,10 +49,43 @@ def countSubstrings(s):
                 print(s[i:j+1])
                 res+=1
     print(dp)
-    return res 
+    return res
+
+def countSubstrings2(s):
+        if not s or len(s)==0:
+            return 0
+        count=0
+        s1=manale(s)
+        print(s1)
+        p=[0]*len(s1)
+        c=-1
+        r=-1
+        for i in range(len(s1)):
+            p[i]=min(p[2*c-i],r-i) if r>i else 1
+            while i+p[i]<len(s1) and i-p[i]>=0:
+                if s1[i+p[i]]==s1[i-p[i]]:
+                    p[i]+=1
+                else:
+                    break
+            if i+p[i]>r:
+                r=i+p[i]
+                c=i
+            count+=p[i]//2
+        return count
+def manale(s):
+    n=len(s)
+    res=[0]*(2*n+1)
+    index=0
+    for i in range(len(res)):
+        if i%2==0:
+            res[i]="#"
+        else:
+            res[i]=s[index]
+            index+=1
+    return res
 
 a='aaa'
-print(countSubstrings(a))
+print(countSubstrings2(a))
 
 #中心拓展法
 def countSubstrings1(s):

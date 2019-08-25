@@ -46,7 +46,7 @@ def heap(li):
             if 2*j+2<n and li[2*j+2]<li[2*j+1]:
                 k=2*j+2
             else:
-                k=2*j+2
+                k=2*j+1
             if li[k]<li[j]:
                 li[k],li[j]=li[j],li[k]
     print(li)

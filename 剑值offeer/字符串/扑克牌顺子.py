@@ -45,5 +45,30 @@ class Solution:
             if max_num-min_num>=5:
                 return False
         return True
+'''
+本题思路很好想，相信玩过QQ斗地主的人都知道什么叫赖子牌，本题实际是一个意思。所谓顺子只需要判断两点：1、五张牌没有重复 2、王牌个数等于顺子中空缺的位置。
+'''
+def IsContinuous(number):
+    if len(number)==0:
+        return False
+    #对数组排序
+    number.sort()
+    #统计大小王个数
+    num=number.count(0)
+    numflack=0#间隔数
+    for i in range(num,len(number)-1):
+        if number[i]==number[i+1]:#如果有对子，肯定不会是
+            return False
+        if number[i+1]==number[i]+1:
+            continue
+        else:
+            #统计相邻数字间的空缺数
+            numflack+=(number[i+1]-number[i]-1)
+    if numflack<=num:
+        return True
+    else:
+        return False
+        
+
         
         

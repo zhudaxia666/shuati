@@ -20,7 +20,7 @@ class Solution:
             self.Mirror(root.left)
         if root.right:
             self.Mirror(root.right)
-
+        return root
 '''
 别人的
 '''

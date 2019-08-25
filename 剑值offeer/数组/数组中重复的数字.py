@@ -94,6 +94,7 @@ class Solution2:
                     duplication[0] = numbers[i]
                     return True
                 numbers[numbers[i]], numbers[i] = numbers[i], numbers[numbers[i]]
+        return False
 
 # -*- coding:utf-8 -*-
 import collections

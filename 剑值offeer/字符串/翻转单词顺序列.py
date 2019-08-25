@@ -31,3 +31,24 @@ class Solution1:
                 s2.append(' ')
             s2.reverse()
             return ''.join(s2).strip()
+'''
+思路3：两次翻转，第一次整个字符串翻转，第二次对每个单词进行翻转，即对两个“ ”内的单词
+'''
+class Solution:
+    def ReverseSentence(self, s):
+        # write code here
+        if len(s)==0 or " " not in s:
+            return s
+        s=s[::-1]
+        l=0
+        res=""
+        r=s.index(" ")
+        while r<len(s):
+            res+=s[l:r][::-1]+" "
+            l=r+1
+            r+=1
+            while r<len(s) and s[r]!=" ":
+                r+=1
+        res+=s[l:r][::-1]
+        return res
+ 

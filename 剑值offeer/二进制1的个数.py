@@ -16,7 +16,7 @@ class Solution:
     def NumberOf1(self, n):
         count=0
         if n<0:
-            n=n & 0xffffffff
+            n=n & 0xffffffff#-1即11111（32个1）
         while n:
             count+=1
             n=n &(n-1)
@@ -26,4 +26,5 @@ class Solution:
 class Solution1:
     def NumberOf1(self, n):
         return sum([(n >> i & 1) for i in range(0,32)])
-
+a=Solution()
+print(a.NumberOf1(-3))
