@@ -49,7 +49,6 @@ def fourSum(self, nums: List[int], target: int) -> List[List[int]]:
         # 如果固定数与数组三最大数之和小于taget, 则当前遍历不存在解, 进入下一个遍历
         if nums[i] + sum(nums[-1:-3 - 1:-1]) < target:
             continue
-
         for j in range(i + 1, length - 2):
             # 去重（剪枝）
             if j - i > 1 and nums[j] == nums[j - 1]:
@@ -60,7 +59,6 @@ def fourSum(self, nums: List[int], target: int) -> List[List[int]]:
             # 如果固定数与数组两最大数之和小于target, 则当前遍历不存在解, 进入下一个遍历
             if nums[i] + nums[j] + sum(nums[-1:-2 - 1:-1]) < target:
                 continue
-
             # 双指针法
             left, right = j + 1, length - 1
             while left < right:

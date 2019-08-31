@@ -16,5 +16,6 @@ def longestCommonPrefix1(s):
 
 
 s=["flower","faowe","floght"]
+list(map(set,zip(*s)))
 print(longestCommonPrefix1(s))
 

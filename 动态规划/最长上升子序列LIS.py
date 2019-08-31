@@ -61,7 +61,7 @@ def LIS2(a,n):
         else:
             low[binaryser(low,a[i],0,end)]=a[i]
     print(end+1)
-    print(low)
+    # print(low)
     
 def binaryser(low,n,left,right):
     while left<right:
@@ -72,5 +72,6 @@ def binaryser(low,n,left,right):
             left=mid+1
     return left
     
-
-
+# n=int(input())
+# arr=list(map(int,input().split()))
+# LIS2(arr,n)

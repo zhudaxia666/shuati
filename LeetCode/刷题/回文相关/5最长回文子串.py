@@ -46,7 +46,6 @@ class Solution2:
         return res
 
 
-
 def longest(s):
     n=len(s)
     res=""

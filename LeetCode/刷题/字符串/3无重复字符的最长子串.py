@@ -18,10 +18,6 @@ class Solution(object):
         return res
 class Solution1:
     def lengthOfLongestSubstring(self, s):
-        """
-        :type s: str
-        :rtype: int
-        """
         st = {}
         i, ans = 0, 0
         for j in range(len(s)):
