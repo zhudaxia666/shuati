@@ -49,6 +49,7 @@ def partition(arr,l,r):#以最后一个位置为划分
         else:
             l+=1
     arr[more],arr[r]=arr[r],arr[more]
+    print(less+1,more)
     return [less+1,more]
 if __name__ == "__main__":
     # arr = [8, 3, 1, 6, 4, 7, 3, 14, 13]

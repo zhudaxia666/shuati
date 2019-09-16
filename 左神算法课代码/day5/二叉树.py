@@ -22,7 +22,6 @@ def preorder(root):
         return None
     else:
         stack=[]
-        
         stack.append(root)
         while len(stack)>0:
             root=stack.pop()
@@ -30,7 +29,6 @@ def preorder(root):
             if root.right:
                 stack.append(root.right)
             if root.left:
-    
                 stack.append(root.left)
     return res
 #中序,首先判断栈是否为空或头结点是否为空，若头结点不为空，就遍历左子树，如果左子树不为空，进栈，直到左子树为空。此时弹出栈顶，遍历栈顶节点的右子树。重复上面的过程

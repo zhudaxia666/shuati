@@ -36,10 +36,31 @@ def bags(v,w,bagv):#参数表示物品体积，重量和背包容量
         if dp[i][j] > dp[i - 1][j]:
             x[i] = True
             j = j - w[i]
-    print(x[1:])
+    print(x)
+    # print(dp)
     print(dp[row-1][col])
-
-w=[0,15,10,12,8]
-v=[0,12,8,9,5]
-bagv=30
-bags(v,w,bagv)
+'''
+优化空间复杂度从O(cn)可以优化为O(c)
+思路：尾部迭代，每个状态表示上一次的最佳结果
+'''
+def bag2(n, c, w, v):
+    values = [0 for i in range(c+1)]
+    for i in range(1, n + 1):
+        for j in range(c, 0, -1):
+            # 背包总容量够放当前物体，遍历前一个状态考虑是否置换
+            if j >= w[i-1]:
+                values[j] = max(values[j-w[i-1]]+v[i-1], values[j])
+                print(values[j],end=',')
+        print()
+    print(values)
+    # return values
+n = 6  #物品的数量，
+c = 10 #书包能承受的重量，
+w = [2, 2, 3, 1, 5, 2] #每个物品的重量，
+v = [2, 3, 1, 5, 4, 3] #每个物品的价值
+bags(v,w,c)
+bag2(n, c, w, v)
+# w=[0,15,10,12,8]
+# v=[0,12,8,9,5]
+# bagv=30
+# bags(v,w,bagv)

@@ -16,7 +16,7 @@ def LCS(string1,string2):
                 res[i][j] = res[i-1][j-1]+1
             else:
                 res[i][j] = max(res[i-1][j],res[i][j-1])
-    return res,res[-1][-1]
+    return res[-1][-1]
 print(LCS("helloworld","loop"))
 
 # 原文链接：https://blog.csdn.net/ggdhs/article/details/90713154

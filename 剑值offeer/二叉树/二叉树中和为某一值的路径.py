@@ -19,7 +19,7 @@
 class Solution:
     # 返回二维列表，内部每个列表表示找到的路径
     def FindPath(self, root, expectNumber):
-        if  not root:
+        if not root:
             return []
         if not root.left and not root.right and expectNumber==root.val:
             return [[root.val]]

@@ -58,6 +58,8 @@ def maxlcp(str1):
         if m<p[i]:#记录全局最大值
             m=p[i]
             t=i
+    print(char)
+    print(p)
     return ''.join(char[t-p[t]+1:t+p[t]]).replace('#','')
 
 a='abc1234321ab'

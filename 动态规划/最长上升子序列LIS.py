@@ -37,7 +37,7 @@ def print_LIS1(A,n):
 
     print(max(r))
     print(pre)
-a=[1,3,7,2]
+a=[1,3,7,2,9]
 print_LIS1(a,len(a))
 '''
 2.贪心算法+二分法
