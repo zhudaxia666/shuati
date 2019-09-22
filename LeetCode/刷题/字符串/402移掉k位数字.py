@@ -48,15 +48,56 @@ class Solution:
 将原整数的所有数字从左到右进行比较，如果发现某位一个位数大于它后面的数字那么删除该数字后，比赛使该数字的值下降
 时间和空间复杂度都是o(n)
 '''
-def removeKdigits(num,k):
-    res=''
-    for i in num:
-        while len(num) and k and res[-1]>i:
-            res=res[:-1]
-            k-=1
-        if len(ans) or i!='0':
-            res=res+i
-    while len(res) and k:
-        res=res[:-1]
-        k-=1
-    return res if len(res) else '0'
+# def removeKdigits(num,k):
+#     res=''
+#     for i in num:
+#         while len(num) and k and res[-1]>i:
+#             res=res[:-1]
+#             k-=1
+#         if len(ans) or i!='0':
+#             res=res+i
+#     while len(res) and k:
+#         res=res[:-1]
+#         k-=1
+#     return res if len(res) else '0'
+def removeKdigits(num, k):
+        if not num or k<=0:
+            return num
+        stack=[]
+        count=0
+        for value in num:
+            if not stack or value>=stack[-1] or count>=k:
+                stack.append(value)
+            else:
+                while stack and value<stack[-1] and count<k:
+                    stack.pop()
+                    count+=1
+                stack.append(value)
+        while count<k:
+            stack.pop()
+            count+=1
+        if not stack:
+            return '0'
+        return '%d'%int(''.join(stack))
+# s=input().split(',')
+# # print(s)
+# print(removeKdigits(s[1],int(s[0])))
+arr=list(map(int,input().split(',')))
+target=arr[0]
+tem=arr[1:]
+tem.sort()
+m=float('inf')
+c=2
+l=0
+r=1
+flag=1
+for i in range(len(tem)-1):
+    for j in range(i+1,len(tem),1):
+        if tem[i]+tem[j]>=target:
+            print(len(tem[i:j+1]))
+            flag=0
+            break
+        c+=1
+    if flag==0:
+        break   
+       
